@@ -20,6 +20,7 @@ import time
 from DomainLogic.EventList import *
 from DomainLogic.SampleList import *
 from DomainLogic.InstancePreReq import *
+
 def home(request):
 
     template= "InspectorCloud/home.html"
@@ -182,6 +183,11 @@ def resourceUsage(request):
     sampleList=sampleObj1.getSamplesStat()
     template="InspectorCloud/resourceUsage.html"
     return render(request,template,{"foo":sampleList})
+
 def Layout(request):
     template="InspectorCloud/Layout.html"
+    return render(request,template)
+
+def makeBillForms(request):
+    template="InspectorCloud/makeBillForms.html"
     return render(request,template)

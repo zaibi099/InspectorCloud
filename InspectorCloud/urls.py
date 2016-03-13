@@ -18,5 +18,6 @@ urlpatterns = patterns('',
                        url(r'^warning/$', 'InspectorCloud.views.warning', name='warning'),
                        url(r'^event/$', 'InspectorCloud.views.event', name='event'),
                        url(r'^resourceusage/$', 'InspectorCloud.views.resourceUsage', name='resourceUsage'),
+                       url(r'^makeBillForms/$', 'InspectorCloud.views.makeBillForms', name='makeBillForms'),
 
                        )

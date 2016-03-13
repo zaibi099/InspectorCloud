@@ -1,0 +1,99 @@
+{% extends "InspectorCloud/Layout.html" %}
+{% block content %}
+        <div class="bodyoutside" style="margin:0px 0px 0px 225px;background:#F8F8FF">
+            <div class="module form-module">
+
+                <div class="form" style="display: block;">
+                    <h2>Create Alarm</h2>
+                    <form action = {% url 'alarms' %} method="POST">
+                        {% csrf_token %}
+                        <label>Select Instance</label>
+
+                        <select name="drop1">
+                            {% for each in servers %}
+                                <option placeholder="Resource id" value={{each}}>{{each}}</option>
+                            {% endfor %}
+                        </select>
+                        <label>Alarm Name</label>
+                        <input name="alName" type="text" placeholder="Name">
+                        <label>Description</label>
+                        <input name="desci" type="text" placeholder="Description">
+                        <label>Meter name</label>
+
+
+                        <select name="drop2">
+                            {% for each in meterss %}
+                                <option placeholder="metername" value={{each}}>{{each}}</option>
+                            {% endfor %}
+                        </select>
+                        <label>Threshold</label>
+                        <input name="trhsh" type="text" placeholder="Treshold">
+                        <label>Comparison operator</label>
+
+
+                        <select name="drop3">
+                            {% for each in comp_opr %}
+                                <option placeholder="Comparison operator" value={{each}}>{{each}}</option>
+                            {% endfor %}
+                        </select>
+                        <label>Statistics</label>
+
+                        <select name="drop4">
+                            {% for each in stats %}
+                                <option placeholder="Statistics" value={{each}}>{{each}}</option>
+                            {% endfor %}
+                        </select>
+                        <label>Time Period(seconds)</label>
+                        <input name="alarmTime" type="text" placeholder="Time period">
+                        <label>Alarm Evaluation(times)</label>
+                        <input name="alarmEval" type="text" placeholder="Evaluation Period">
+                        <label>Insufficient Data Action</label>
+                        <input name="insufficDataAction" type="text" placeholder="Insufficient..">
+                        <label>Alarm OK Action</label>
+                        <input name="okAction" type="text" placeholder="Ok..">
+                        <label>Alarm Raise Action</label>
+                        <input name="alarmAction" type="text" placeholder="Alarm..">
+
+                        <button id="Create_alarm" onclick="{% url 'alarms' %}">Create Alarm</button>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+ {% endblock %}
+
+ <script type="text/javascript">
+                            $(document).ready(function(){
+                                $('#drop1').on('change', function() {
+                                    $('#text1').val($('#drop1').val());
+
+                                });
+                            });
+                        </script>
+
+ <script type="text/javascript">
+                            $(document).ready(function(){
+                                $('#drop2').on('change', function() {
+                                    $('#text2').val($('#drop2').val());
+
+                                });
+                            });
+                        </script>
+   <script type="text/javascript">
+                            $(document).ready(function(){
+                                $('#drop3').on('change', function() {
+                                    $('#text3').val($('#drop3').val());
+
+                                });
+                            });
+                        </script>
+  <script type="text/javascript">
+                            $(document).ready(function(){
+                                $('#drop4').on('change', function() {
+                                    $('#text4').val($('#drop4').val());
+
+                                });
+                            });
+                        </script>
