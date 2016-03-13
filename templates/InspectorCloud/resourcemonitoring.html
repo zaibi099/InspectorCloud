@@ -1,0 +1,49 @@
+{% extends "InspectorCloud/Layout.html" %}
+{% block content %}
+<div style="margin:0px 0px 0px 225px;">
+
+ 
+<div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Resource_id</th>
+                  <th>Name</th>
+                  <th>Image</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+               
+{#		{%for each in foo%}#}
+{#			#}
+{#                <tr>#}
+{#                  <td>{{each.0}}</td>#}
+{#                  <td>{{each.1}}</td>#}
+{#                  <td>{{each.2}}</td>#}
+{#                  #}
+{#                  <td>{{each.3}}</td>#}
+{#                </tr>#}
+{#		{%endfor%}#}
+               
+
+
+{% for key, value  in foo.items %}
+    <tr>
+    <td>{{key  }}</td>
+
+    <td>{{ value.1 }}</td>
+<td>{{ value.2 }}</td>
+        <td>{{ value.3 }}</td>
+    </tr>
+{% endfor %}
+
+
+               
+              </tbody>
+            </table>
+</div>
+
+      </div>
+
+ {% endblock %}

@@ -1,0 +1,45 @@
+{% extends "InspectorCloud/Layout.html" %}
+{% block content %}
+        
+<div style="clear:both;"></div>
+         <div style="margin:0px 0px 0px 225px;">
+
+ 
+<div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Tenant</th>
+                    <th>Instance Name</th>
+                  <th>Service</th>
+                    <th>Meter Name</th>
+                    <th>Min</th>
+                    <th>Max</th>
+                    <th>Avg</th>
+                    <th>Meter Type</th>
+                    <th>Meter Unit</th>
+		
+                </tr>
+              </thead>
+              <tbody>
+               
+		{%for each in foo%}
+			
+                <tr>
+
+                {% for key, value in each %}
+                 <td>{{value}}</td>
+
+                {%endfor%}
+
+                </tr>
+		{%endfor%}
+               
+
+               
+              </tbody>
+            </table>
+</div>
+
+      </div>
+  {% endblock %}

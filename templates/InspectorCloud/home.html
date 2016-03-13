@@ -1,0 +1,188 @@
+{% extends "InspectorCloud/Layout.html" %}
+{% block content %}
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Summary</h1>
+
+          <div class="row placeholders">
+            <div class="col-xs-6 col-sm-3 placeholder" >
+             <!--Load the AJAX API-->
+                                    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+                                    <script type="text/javascript">
+
+                                      // Load the Visualization API and the piechart package.
+                                      google.load('visualization', '1.0', {'packages':['corechart']});
+
+                                      // Set a callback to run when the Google Visualization API is loaded.
+                                      google.setOnLoadCallback(drawChart);
+
+                                      // Callback that creates and populates a data table,
+                                      // instantiates the pie chart, passes in the data and
+                                      // draws it.
+                                      function drawChart() {
+
+                                        // Create the data table.
+                                        var data = new google.visualization.DataTable();
+                                        data.addColumn('string', 'Topping');
+                                        data.addColumn('number', 'Slices');
+                                        data.addRows([
+                                          ['no_of_cpus', 10],
+                                          ['total_Ram', 512],
+                                          ['total_disk', 100],
+                                          ['Network', 512],
+                                         
+                                        ]);
+
+                                        // Set chart options
+                                        var options = {'title':'Available Resources',
+                                                       'width':600,
+                                                       'height':400};
+
+                                        // Instantiate and draw our chart, passing in some options.
+                                        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+                                        chart.draw(data,options);
+                                      }
+                                    </script>
+  
+<!--Div that will hold the pie chart-->
+    <div id="chart_div"></div>
+    <span class="text-muted"></span>
+    </div>
+            <div class="col-xs-6 col-sm-3 placeholder" style="margin-left:25%;">
+              <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+                                        <script type="text/javascript">
+
+                                          // Load the Visualization API and the piechart package.
+                                          google.load('visualization', '1.0', {'packages':['corechart']});
+
+                                          // Set a callback to run when the Google Visualization API is loaded.
+                                          google.setOnLoadCallback(drawChart);
+
+                                          // Callback that creates and populates a data table,
+                                          // instantiates the pie chart, passes in the data and
+                                          // draws it.
+                                          function drawChart() {
+
+                                            // Create the data table.
+                                            var data = new google.visualization.DataTable();
+                                            data.addColumn('string', 'Topping');
+                                            data.addColumn('number', 'Slices');
+                                            data.addRows([
+                                              ['no_of_cpus', 10],
+                                              ['total_Ram', 512],
+                                              ['total_disk', 100],
+                                              ['Network', 512],
+                                             
+                                            ]);
+
+                                            // Set chart options
+                                            var options = {'title':'Consumed Resources',
+                                                           'width':600,
+                                                           'height':400};
+
+                                            // Instantiate and draw our chart, passing in some options.
+                                            var chart = new google.visualization.PieChart(document.getElementById('chart_div1'));
+                                            chart.draw(data,options);
+                                          }
+                                        </script>
+                                      
+<!--Div that will hold the pie chart-->
+    <div class="col-xs-6 col-sm-3 placeholder"  id="chart_div1"></div>
+    <span class="text-muted"></span>
+    </div>
+
+<div style="clear:both;"></div>
+
+
+
+<div class="col-xs-6 col-sm-3 placeholder" >
+                                    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+                                    <script type="text/javascript">
+
+                                      // Load the Visualization API and the piechart package.
+                                      google.load('visualization', '1.0', {'packages':['corechart']});
+
+                                      // Set a callback to run when the Google Visualization API is loaded.
+                                      google.setOnLoadCallback(drawChart);
+
+                                      // Callback that creates and populates a data table,
+                                      // instantiates the pie chart, passes in the data and
+                                      // draws it.
+                                      function drawChart() {
+
+                                        // Create the data table.
+                                        var data = new google.visualization.DataTable();
+                                        data.addColumn('string', 'Topping');
+                                        data.addColumn('number', 'Slices');
+                                        data.addRows([
+                                          ['total ram', 51200],
+                                          ['used_Ram', {{foo.0}}],
+                                         
+                                         
+                                        ]);
+
+                                        // Set chart options
+                                        var options = {'title':'Memory',
+                                                       'width':600,
+                                                       'height':400};
+
+                                        // Instantiate and draw our chart, passing in some options.
+                                        var chart = new google.visualization.PieChart(document.getElementById('chart_div2'));
+                                        chart.draw(data,options);
+                                      }
+                                    </script>
+  
+<!--Div that will hold the pie chart-->
+    <div id="chart_div2"></div>
+    <span class="text-muted"></span>
+    </div>
+            <div class="col-xs-6 col-sm-3 placeholder" style="margin-left:25%;">
+             <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+                                    <script type="text/javascript">
+
+                                      // Load the Visualization API and the piechart package.
+                                      google.load('visualization', '1.0', {'packages':['corechart']});
+
+                                      // Set a callback to run when the Google Visualization API is loaded.
+                                      google.setOnLoadCallback(drawChart);
+
+                                      // Callback that creates and populates a data table,
+                                      // instantiates the pie chart, passes in the data and
+                                      // draws it.
+                                      function drawChart() {
+
+                                        // Create the data table.
+                                        var data = new google.visualization.DataTable();
+                                        data.addColumn('string', 'Topping');
+                                        data.addColumn('number', 'Slices');
+                                        data.addRows([
+                                          ['no_of_cpus', 70],
+                                          ['total_Ram', 512],
+                                          ['total_disk', 100],
+                                          ['Network', 512],
+                                          ['gandu', 212],
+                                         
+                                        ]);
+
+                                        // Set chart options
+                                        var options = {'title':'Disk Usage',
+                                                       'width':600,
+                                                       'height':400};
+
+                                        // Instantiate and draw our chart, passing in some options.
+                                        var chart = new google.visualization.PieChart(document.getElementById('chart_div3'));
+                                        chart.draw(data,options);
+                                      }
+                                    </script>
+  
+<!--Div that will hold the pie chart-->
+    <div id="chart_div3"></div>
+              
+              <span class="text-muted"></span>
+            </div>
+        
+<div style="clear:both;"></div>
+         
+        </div>
+      </div>
+
+{% endblock %}
