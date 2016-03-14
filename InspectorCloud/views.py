@@ -1,5 +1,15 @@
 from django.shortcuts import render
 
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+from DomainLogic.InstancePreReq import *
+from DomainLogic.makeBillPreReq import *
+from DomainLogic.preReq import *
+from DomainLogic.AlarmPreReq import *
+import subprocess
+
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 # Create your views here.
 from django.shortcuts import *
 from django.http import HttpResponse
@@ -8,18 +18,12 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 from django.views import generic
-#from scripts.ceilometer import *
 from DomainLogic.RunningInstances import *
 from DomainLogic.Debugging import *
-#from scripts.ceilometer import *
-from DomainLogic.preReq import *
-from DomainLogic.AlarmPreReq import *
 import os
-import subprocess
 import time
 from DomainLogic.EventList import *
 from DomainLogic.SampleList import *
-from DomainLogic.InstancePreReq import *
 
 def home(request):
 
@@ -189,5 +193,23 @@ def Layout(request):
     return render(request,template)
 
 def makeBillForms(request):
+
+    try:
+
+        if (request.method == 'POST'):
+
+                t = loader.get_template('InspectorCloud/resourcemonitoring.html')
+                return HttpResponse(t.render(None, request));
+
+    except:
+
+        return HttpResponse("ERROR.....")
+
+    template = "InspectorCloud/makeBillForms.html"
+
+    billObj = makeBillPreReq();
+    novaMeters = billObj.getAllMeters();
+
+    return render(request, template, {"flvrs": flvrs, "imgz": imgz, "netwrk": netwrk, "keyz": keyz, "scrty": scrty})
     template="InspectorCloud/makeBillForms.html"
     return render(request,template)
