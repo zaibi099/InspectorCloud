@@ -1,0 +1,344 @@
+{% extends "InspectorCloud/layout.html" %}
+{% block content %}
+
+  <div class="">
+          <div class="page-title">
+            <div class="title_left">
+              <h3>Resource Quotas</h3>
+            </div>
+
+            <div class="title_right">
+              <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search for...">
+                  <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Go!</button>
+                        </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+
+          <div class="row">
+
+              <div style="display: none;">
+                <div style="display: none;">
+                  <div id="graph_bar"></div>
+                </div>
+                <div style="display: none;">
+                  <div id="graph_bar_group"></div>
+                </div>
+                  <div id="graphx"></div>
+                </div>
+
+
+            <!-- pie chart -->
+            <div class="col-md-6 col-sm-6 col-xs-12 mini">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Cores</h2>
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Settings 1</a>
+                        </li>
+                        <li><a href="#">Settings 2</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content2">
+                    <h6>Available Ram:{{ foo.mCo }}</h6>
+                    <h6>Ram utilized:{{foo.tCo  }}</h6>
+                  <div id="graph_donut1" style="width:100%; height:300px;">
+                      </div>
+                </div>
+              </div>
+            </div>
+            <!-- /Pie chart -->
+<!-- pie chart -->
+            <div class="col-md-6 col-sm-6 col-xs-12 mini">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Ram</h2>
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Settings 1</a>
+                        </li>
+                        <li><a href="#">Settings 2</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content2">
+                    <h6>Available Ram:{{ foo.mRam }}GB</h6>
+                    <h6>Ram utilized:{{foo.tRam  }}MB</h6>
+                  <div id="graph_donut2" style="width:100%; height:300px;">
+                      </div>
+                </div>
+              </div>
+            </div>
+            <!-- /Pie chart -->
+
+              <!-- pie chart -->
+            <div class="col-md-6 col-sm-6 col-xs-12 mini">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>VM'S</h2>
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Settings 1</a>
+                        </li>
+                        <li><a href="#">Settings 2</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content2">
+                    <h6>Available VM's:{{ foo.mIn }}</h6>
+                    <h6>VM's utilized:{{foo.tIn  }}</h6>
+                  <div id="graph_donut3" style="width:100%; height:300px;">
+                      </div>
+                </div>
+              </div>
+            </div>
+            <!-- /Pie chart -->
+
+              <!-- pie chart -->
+            <div class="col-md-6 col-sm-6 col-xs-12 mini">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Floating IP's</h2>
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Settings 1</a>
+                        </li>
+                        <li><a href="#">Settings 2</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content2">
+                    <h6>Available FIP's:{{ foo.mfIp }}</h6>
+                    <h6>FIP's utilized:{{foo.tfIp  }}</h6>
+                  <div id="graph_donut4" style="width:100%; height:300px;">
+                      </div>
+                </div>
+              </div>
+            </div>
+            <!-- /Pie chart -->
+
+                            <!-- pie chart -->
+            <div class="col-md-6 col-sm-6 col-xs-12 mini">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Security Groups</h2>
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Settings 1</a>
+                        </li>
+                        <li><a href="#">Settings 2</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content2">
+                    <h6>Available Security Groups:{{ foo.mSG }}</h6>
+                    <h6>Security Groups utilized:{{foo.tSG  }}</h6>
+                  <div id="graph_donut5" style="width:100%; height:300px;">
+                      </div>
+                </div>
+              </div>
+            </div>
+            <!-- /Pie chart -->
+
+                                          <!-- pie chart -->
+            <div class="col-md-6 col-sm-6 col-xs-12 mini">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Key Pairs</h2>
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Settings 1</a>
+                        </li>
+                        <li><a href="#">Settings 2</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content2">
+                    <h6>Available Key Pairs:{{ foo.mKeyP }}</h6>
+                    <h6>Ram utilized:{{foo.tKeyP  }}</h6>
+                  <div id="graph_donut6" style="width:100%; height:300px;">
+                      </div>
+                </div>
+              </div>
+            </div>
+            <!-- /Pie chart -->
+          </div>
+        </div>
+      <script>
+          $(function () {
+var i={{ foo.tCo }}/{{ foo.mCo }};
+i=i*100;
+var j=100-i;
+
+     Morris.Donut({
+                element: 'graph_donut1',
+                data: [
+                    {label: 'Cores Available', value: j},
+                    {label: 'Cores Utilized', value:i}
+
+                ],
+                colors: ['#F8DA4B', '#DB5343'],
+                formatter: function (y) {
+                    return y + "%"
+                }
+            });});
+</script>
+            <script>
+          $(function () {
+var i={{ foo.tRam }}/{{ foo.mRam }};
+i=i*100;
+var j=100-i;
+
+     Morris.Donut({
+                element: 'graph_donut2',
+                data: [
+                    {label: 'Ram Available', value: j},
+                    {label: 'Ram Utilized', value:i}
+
+                ],
+                colors: ['#26B99A', '#0099CC',],
+                formatter: function (y) {
+                    return y + "%"
+                }
+            });});
+</script>
+                  <script>
+          $(function () {
+var i={{ foo.tIn }}/{{ foo.mIn }};
+i=i*100;
+var j=100-i;
+
+     Morris.Donut({
+                element: 'graph_donut3',
+                data: [
+                    {label: 'VM\'s Available', value: j},
+                    {label: 'VM\'s Utilized', value:i}
+
+                ],
+                colors: ['#3498DB', '#421C52'],
+                formatter: function (y) {
+                    return y + "%"
+                }
+            });});
+</script>
+
+                        <script>
+          $(function () {
+var i={{ foo.tfIp }}/{{ foo.mfIp }};
+i=i*100;
+var j=100-i;
+
+     Morris.Donut({
+                element: 'graph_donut4',
+                data: [
+                    {label: 'Floating IP\'s Available', value: j},
+                    {label: 'Floating IP\'s Utilized', value:i}
+
+                ],
+                colors: ['#3498DB', '#ACADAC'],
+                formatter: function (y) {
+                    return y + "%"
+                }
+            });});
+</script>
+                             <script>
+          $(function () {
+var i={{ foo.tSG }}/{{ foo.mSG }};
+i=i*100;
+var j=100-i;
+
+     Morris.Donut({
+                element: 'graph_donut5',
+                data: [
+                    {label: 'Security Groups Available', value: j},
+                    {label: 'Security Groups Utilized', value:i}
+
+                ],
+                colors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
+                formatter: function (y) {
+                    return y + "%"
+                }
+            });});
+</script>
+
+      <script>
+          $(function () {
+var i={{ foo.tKeyP }}/{{ foo.mKeyP }};
+i=i*100;
+var j=100-i;
+
+     Morris.Donut({
+                element: 'graph_donut6',
+                data: [
+                    {label: 'Key Pairs Available', value: j},
+                    {label: 'Key Pairs Utilized', value:i}
+
+                ],
+                colors: ['#C5007C', '#FF9400'],
+                formatter: function (y) {
+                    return y + "%"
+                }
+            });});
+</script>
+{% endblock %}

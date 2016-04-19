@@ -1,0 +1,32 @@
+  {% extends "InspectorCloud/layout.html" %}
+  {% block content %}
+ <table class="table table-striped responsive-utilities jambo_table bulk_action">
+                    <thead>
+                      <tr class="headings">
+                        <th class="column-title">Tenant Name</th>
+                        <th class="column-title">Event Name</th>
+                        <th class="column-title">Generation Time</th>
+                        <th class="column-title">Traits</th>
+
+                      </tr>
+                    </thead>
+
+                    <tbody>
+
+                   {%for each in foo%}
+
+                <tr>
+
+                {% for key, value in each %}
+                 <td>{{value}}</td>
+
+                {%endfor%}
+
+                </tr>
+		{%endfor%}
+                    </tbody>
+
+                    <!-- <tr class="odd pointer"> -->
+
+                  </table>
+  {% endblock %}

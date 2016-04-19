@@ -1,0 +1,128 @@
+{% extends "InspectorCloud/layout.html" %}
+{% block content %}
+
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Create Instance Form</h2>
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+
+                  <form action ={% url 'createRouter' %} method="POST" id="routerForm" class="form-horizontal form-label-left" novalidate>
+
+                  {% csrf_token %}
+
+                    <p>Input your credentials andcreate instance through it <code>KABOOM</code>
+                    
+                    </p>
+                    
+                    <span class="section">  </span>
+
+                    <div class="item form-group">              
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Tenants<span class="required">*</span>
+                      </label>
+
+                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                      
+                      <select name="tenantList" class="styled-select form-control form-group col-md-6 col-sm-6 col-xs-12 btn-block">
+                          {% for each in tenants %}
+                            <option>{{ each }}</option>
+                          {% endfor %}
+                      </select>
+                      </div>
+
+                    </div>
+
+                    <div class="item form-group ">
+                    
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Network <span class="required">*</span>
+                      </label>
+
+                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+
+                        <select name="networkList" class="styled-select form-control form-group col-md-6 col-sm-6 col-xs-12 btn-block">
+                          {% for each in nets %}
+                            <option>{{ each }}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+
+                    </div>
+
+                    <div class="item form-group ">
+                    
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Subnet <span class="required">*</span>
+                      </label>
+
+                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+
+                        <select name="subnetList" class="styled-select form-control form-group col-md-6 col-sm-6 col-xs-12 btn-block">
+                          {% for each in subnets %}
+                            <option>{{ each }}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+
+                    </div>
+
+                    <div class="item form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="website">Router Name<span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input id="routerName" name="routerName" type="text" required="required" placeholder="//log.txt" class="form-control col-md-7 col-xs-12">
+                      </div>
+                    </div>
+
+
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                      <div class="col-md-6 col-md-offset-3">
+                        <button onClick="window.location.reload()" type="submit" class="btn btn-primary">Cancel</button>
+                        <button id="send" type="submit" class="btn btn-success">Submit</button>
+                      </div>
+                    </div>
+                  </form>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+  <script>
+
+    validator.message['date'] = 'not a real date';
+
+    $('form')
+      .on('blur', 'input[required], input.optional, select.required', validator.checkField)
+      .on('change', 'select.required', validator.checkField)
+      .on('keypress', 'input[required][pattern]', validator.keypress);
+
+    $('.multi.required')
+      .on('keyup blur', 'input', function() {
+        validator.checkField.apply($(this).siblings().last()[0]);
+      });
+
+    $('form').submit(function(e) {
+      e.preventDefault();
+      var submit = true;
+      // evaluate the form using generic validaing
+      if (!validator.checkAll($(this))) {
+        submit = false;
+      }
+
+      if (submit)
+        this.submit();
+      return false;
+    });
+  </script>
+
+{% endblock %}

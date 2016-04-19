@@ -1,0 +1,133 @@
+{% extends "InspectorCloud/layout.html" %}
+{% block content %}
+{% load staticfiles %}
+
+
+  <script src="{% static 'static_dirs/js/datatables/jquery.dataTables.min.js' %}"></script>
+  <script src="{% static 'static_dirs/js/datatables/dataTables.bootstrap.js' %}"></script>
+  <script src="{% static 'static_dirs/js/datatables/dataTables.buttons.min.js' %}"></script>
+  <script src="{% static 'static_dirs/js/datatables/buttons.bootstrap.min.js' %}"></script>
+  <script src="{% static 'static_dirs/js/datatables/jszip.min.js' %}"></script>
+  <script src="{% static 'static_dirs/js/datatables/pdfmake.min.js' %}"></script>
+  <script src="{% static 'static_dirs/js/datatables/vfs_fonts.js' %}"></script>
+  <script src="{% static 'static_dirs/js/datatables/buttons.html5.min.js' %}"></script>
+  <script src="{% static 'static_dirs/js/datatables/buttons.print.min.js' %}"></script>
+  <script src="{% static 'static_dirs/js/datatables/dataTables.fixedHeader.min.js' %}"></script>
+  <script src="{% static 'static_dirs/js/datatables/dataTables.keyTable.min.js' %}"></script>
+  <script src="{% static 'static_dirs/js/datatables/dataTables.responsive.min.js' %}"></script>
+  <script src="{% static 'static_dirs/js/datatables/responsive.bootstrap.min.js' %}"></script>
+  <script src="{% static 'static_dirs/js/datatables/dataTables.scroller.min.js' %}"></script>
+
+
+          <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Alarm List<small>For all Instances</small></h2>
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li><a href="#"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <p class="text-muted font-13 m-b-30">
+                    Instance With their respective alarms are shown in this table
+                  </p>
+                  <table id="datatable-buttons" class="table table-striped responsive-utilities jambo_table bulk_action">
+                    <thead>
+                      <tr class="headings">
+                        <th class="column-title">Sr.No</th>
+                        <th class="column-title">Name</th>
+                        <th class="column-title">State</th>
+                        <th class="column-title">Meter</th>
+                        <th class="column-title">Value</th>
+                        <th class="column-title">Eval Period</th>
+                        <th class="column-title" >Time</th>
+                        <th class="column-title">Stats</th>
+                        <th class="column-title">Threshold</th>
+                        <th class="column-title">Operator</th>
+                      </tr>
+                    </thead>
+
+                  <tbody>
+                    
+                    {% for each in alarmList %}
+                    <tr>
+
+                            <td>  {{ forloop.counter }} </td>
+                            <td>  {{ each.name }} </td>
+                            <td>  {{ each.state }} </td>
+                            <td>  {{ each.threshold_rule.meter_name }} </td>
+                            <td>  {{ each.severity }} </td>
+                            <td>  {{ each.threshold_rule.evaluation_periods }} </td>
+                            <td>  {{ each.threshold_rule.period }} </td>
+                            <td>  {{ each.threshold_rule.statistic }} </td>
+                            <td>  {{ each.threshold_rule.threshold }} </td>
+                            <td>  {{ each.threshold_rule.comparison_operator }} </td>
+
+                    </tr>
+                    {% endfor %}
+                
+                  </tbody>
+
+                   
+                  </table>
+                </div>
+              </div>
+            </div>
+
+
+
+
+        <script>
+
+          var handleDataTableButtons = function() {
+              "use strict";
+              0 !== $("#datatable-buttons").length && $("#datatable-buttons").DataTable({
+                dom: "Bfrtip",
+                buttons: [{
+                  extend: "excel",
+                  className: "btn-sm"
+                }, {
+                  extend: "pdf",
+                  className: "btn-sm"
+                }, {
+                  extend: "print",
+                  className: "btn-sm"
+                }],
+                responsive: !0
+              })
+            },
+            TableManageButtons = function() {
+              "use strict";
+              return {
+                init: function() {
+                  handleDataTableButtons()
+                }
+              }
+            }();
+        </script>
+        <script type="text/javascript">
+          $(document).ready(function() {
+            $('#datatable').dataTable();
+            $('#datatable-keytable').DataTable({
+              keys: true
+            });
+            $('#datatable-responsive').DataTable();
+            $('#datatable-scroller').DataTable({
+              ajax: "js/datatables/json/scroller-demo.json",
+              deferRender: true,
+              scrollY: 380,
+              scrollCollapse: true,
+              scroller: true
+            });
+            var table = $('#datatable-fixed-header').DataTable({
+              fixedHeader: true
+            });
+          });
+          TableManageButtons.init();
+        </script>
+
+{% endblock %}

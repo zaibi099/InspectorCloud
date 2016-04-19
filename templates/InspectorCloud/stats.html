@@ -1,0 +1,39 @@
+  {% extends "InspectorCloud/layout.html" %}
+  {% block content %}
+ <table class="table table-striped responsive-utilities jambo_table bulk_action">
+                    <thead>
+                      <tr class="headings">
+
+                        <th class="column-title">Tenant</th>
+                        <th class="column-title">VM</th>
+
+                        <th class="column-title">Service</th>
+                        <th class="column-title">Meter</th>
+                        <th class="column-title">Min</th>
+                          <th class="column-title">Max</th>
+                          <th class="column-title">Avg</th>
+                          <th class="column-title">Meter Type</th>
+                          <th class="column-title">Meter Unit</th>
+
+                      </tr>
+                    </thead>
+
+                    <tbody>
+
+                   {%for each in foo%}
+
+                <tr>
+
+                {% for key, value in each %}
+                 <td>{{value}}</td>
+
+                {%endfor%}
+
+                </tr>
+		{%endfor%}
+                    </tbody>
+
+                    <!-- <tr class="odd pointer"> -->
+
+                  </table>
+  {% endblock %}

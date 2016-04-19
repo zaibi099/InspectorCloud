@@ -1,0 +1,111 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>InspectorCloud</title>
+
+  <link href="{% static 'static_dirs/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'static_dirs/fonts/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'static_dirs/css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'static_dirs/css/custom.css' %}" rel="stylesheet">
+  <link href="{% static 'static_dirs/css/icheck/flat/green.css' %}" rel="stylesheet">
+  <script src="{% static 'static_dirs/js/jquery.min.js' %}"></script>
+  <script src="{% static 'static_dirs/js/validator/validator.js'%}"></script>
+
+</head>
+
+<body style="background:#F7F7F7;">
+
+  <div class="">
+    <a class="hiddenanchor" id="toregister"></a>
+    <a class="hiddenanchor" id="tologin"></a>
+
+    <div id="wrapper">
+      <div id="login" class="animate form">
+        <section class="login_content">
+              <form action = {% url 'loginForm' %} method="POST" id="loginForm" class="form-horizontal form-label-left" novalidate>
+                  
+                  {% csrf_token %}
+                  <h1>Login Form</h1>
+                    <span class="section">  </span>
+
+                    <div class="item form-group ">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">User <span class="required"></span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input id="user_name" name="user_name" required="required" class="form-control col-md-7 col-xs-12">
+                      </div>
+                    </div>
+
+                    <div class="item form-group ">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Password <span class="required"></span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="password" id="password" name="password" required="required" class="form-control col-md-7 col-xs-12">
+                      </div>
+                    </div>
+
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                      <div class="col-md-6 col-md-offset-3">
+                        <button id="send" type="submit" class="btn btn-success">Submit</button>
+                      </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <br />
+                    <div>
+                      <h1><i class="fa fa-cloud" style="font-size: 26px;"></i> InspectorCloud!</h1>
+
+                      <p>Team InspectorCloud , Fast Nuces Islamabad</p>
+                    </div>
+
+                  </form>
+
+          <!-- form -->
+        </section>
+        <!-- content -->
+      </div>
+    </div>
+  </div>
+
+</body>
+
+  <script>
+
+    validator.message['date'] = 'not a real date';
+
+    $('form')
+      .on('blur', 'input[required], input.optional, select.required', validator.checkField)
+      .on('change', 'select.required', validator.checkField)
+      .on('keypress', 'input[required][pattern]', validator.keypress);
+
+    $('.multi.required')
+      .on('keyup blur', 'input', function() {
+        validator.checkField.apply($(this).siblings().last()[0]);
+      });
+
+    $('form').submit(function(e) {
+      e.preventDefault();
+      var submit = true;
+      // evaluate the form using generic validaing
+      if (!validator.checkAll($(this))) {
+        submit = false;
+      }
+
+      if (submit)
+        this.submit();
+      return false;
+    });
+  </script>
+
+
+</html>

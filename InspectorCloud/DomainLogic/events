@@ -1,0 +1,6 @@
+#!/bin/bash
+cd ~/fyp/devstack
+source openrc $1 $2
+cd ~/fyp/Notebook
+chmod a+x *.py
+./EventsListHelper.py $2 $3

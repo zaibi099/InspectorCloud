@@ -1,0 +1,171 @@
+{% extends "InspectorCloud/layout.html" %}
+{% block content %}
+{% load staticfiles %}
+
+          <div class="clearfix"></div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="x_panel">
+                <div class="x_title">
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+
+                  <section class="content invoice">
+                    <!-- title row -->
+                    <div class="row">
+                      <div class="col-xs-12 invoice-header">
+                        <h1>
+                                        <img src="{% static 'static_dirs/images/invoice.png' %}" alt="Visa"> Invoice
+                                        <small id="datii" class="pull-right">Date : 16-2-2016</small>
+                                    </h1>
+                      </div>
+                      <!-- /.col -->
+                    </div>
+                    <!-- info row -->
+                    <div class="row invoice-info">
+                      <div class="col-sm-4 invoice-col">
+                        From
+                        <address>
+                                        <strong>InspectorCloud Inc</strong>
+                                        <br><strong>Addr:</strong>Islamabad, CA 120184
+                                        <br><strong>Phone:</strong> +(92)321-5979271
+                                        <br><strong>Email:</strong> inspectorCloud@gmail.com
+                                    </address>
+                      </div>
+                      <!-- /.col -->
+                      <div class="col-sm-4 invoice-col">
+                        To
+                        <address>
+                                        <strong>Umar Usaf</strong>
+                                        <br><strong>Instance :</strong>
+                                        {{ inst }}
+                                        <br><strong>Bill Category :</strong>
+                                        {{ catg }}
+                                        <br><strong>Email:</strong> umarUsaf@gmail.com
+                                    </address>
+                      </div>
+                      <!-- /.col -->
+                      <div class="col-sm-4 invoice-col">
+                        <b>Invoice #007612</b>
+                        <br>
+                        <b>Order ID:</b> 4F3S8J
+                        <br>
+                        <b id="payment_date"><strong>Payment Date:<strong></b>
+                        <br>
+                        <b>Account:</b> 123-968-34567
+                      </div>
+                      <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+
+                    <!-- Table row -->
+                    <div class="row">
+                      <div class="col-xs-12 table">
+                        <table class="table table-striped">
+                          <thead>
+                            <tr>
+                              <th>Flavour</th>
+                              <th>VCpus</th>
+                              <th>Ram</th>
+                              <th>Ephemeral</th>
+                              <th>Disk</th>
+                              <th>Price</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+
+                            <tr>
+                              <td>{{ flvr.name }}</td>
+                              <td>{{ flvr.vcpus }}</td>
+                              <td>{{ flvr.ram }}</td>
+                              <td>{{ flvr.ephemeral }}</td>
+                              <td>{{ flvr.disk }}</td>
+                              <td>{{ price }}</td>
+                            <tr>
+
+                          </tbody>
+                        </table>
+                      </div>
+                      <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+
+                    <div class="row">
+                      <!-- accepted payments column -->
+                      <div class="col-xs-6">
+                        <p class="lead">Payment Methods:</p>
+                        <img src="{% static 'static_dirs/images/visa.png' %}" alt="Visa">
+                        <img src="{% static 'static_dirs/images/mastercard.png' %}" alt="Mastercard">
+                        <img src="{% static 'static_dirs/images/american-express.png' %}" alt="American Express">
+                        <img src="{% static 'static_dirs/images/paypal2.png' %}" alt="Paypal">
+                        <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
+                          And If you are Shoda and dont have any card than no worries click the bottom rightbutton to generate PDF of it and print that PDF and go to nearest pizza shop and pay your bill there *KABOOM* you are done
+                        </p>
+                      </div>
+                      <!-- /.col -->
+                      <div class="col-xs-6">
+                        <p class="lead">Amount Due 2/22/2014</p>
+                        <div class="table-responsive">
+                          <table class="table">
+                            <tbody>
+                              <tr>
+                                <th style="width:50%">Total Hours :</th>
+                                <td>{{ billObj.consumed_hour }}</td>
+                              </tr>
+                              <tr>
+                                <th style="width:50%">Subtotal:</th>
+                                <td>{{ billObj.amount }}</td>
+                              </tr>
+                              <tr>
+                                <th>Tax (10%)</th>
+                                <td>{{ tax }}</td>
+                              </tr>
+                              <tr>
+                                <th>Total:</th>
+                                <td>{{ sumi }}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                      <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+
+                    <!-- this row will not appear when printing -->
+                    <div class="row no-print">
+                      <div class="col-xs-12">
+                        <button class="btn btn-default" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
+                        <button class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment</button>
+                        <button class="btn btn-primary pull-right" id="datatable-buttons" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
+                      </div>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+<script>
+
+var d = new Date();
+var month = d.getMonth();
+var date = d.getDate();
+var year = d.getFullYear();
+
+document.getElementById("datii").innerHTML = "Date: "+date+"/"+month+"/"+year;
+document.getElementById("payment_date").innerHTML = "Payment Date: "+date+"/"+month+"/"+year;
+
+</script>
+
+{% endblock %}
